@@ -43,10 +43,10 @@ class PermissionTableSeeder extends Seeder
             ['id' => 18, 'name' => 'config-edit'],
             ['id' => 19, 'name' => 'config-delete'],
 
-            ['id' => 16, 'name' => 'journal-view'],
-            ['id' => 17, 'name' => 'journal-create'],
-            ['id' => 18, 'name' => 'journal-edit'],
-            ['id' => 19, 'name' => 'journal-delete'],
+            ['id' => 20, 'name' => 'journal-view'],
+            ['id' => 21, 'name' => 'journal-create'],
+            ['id' => 22, 'name' => 'journal-edit'],
+            ['id' => 23, 'name' => 'journal-delete'],
         ];
 
             foreach ($permissions as $item) {

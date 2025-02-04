@@ -89,17 +89,17 @@
                                         <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-125px py-4"
                                             data-kt-menu="true">
                                             <!--begin::Menu item-->
-                                            <!-- @can('permission-edit') -->
+                                            @can('journal-edit')
                                             <div class="menu-item px-3">
                                                 <a href="{{ route('journals.edit', ['journal' => $journal]) }}"
                                                     type="button" class="menu-link px-3 edit-role-btn">
                                                     Edit
                                                 </a>
                                             </div>
-                                            <!-- @endcan -->
+                                            @endcan
                                             <!--end::Menu item-->
                                             <!--begin::Menu item-->
-                                            <!-- @can('permission-delete') -->
+                                            @can('journal-delete')
                                             <div class="menu-item px-3">
                                                 <form id="delete-form-{{ $journal->id }}"
                                                     action="{{ route('journals.destroy', ['journal' => $journal]) }}"
@@ -110,7 +110,7 @@
                                                         onclick="event.preventDefault(); document.getElementById('delete-form-{{ $journal->id }}').submit();">Delete</a>
                                                 </form>
                                             </div>
-                                            <!-- @endcan -->
+                                            @endcan
                                             <!--end::Menu item-->
                                         </div>
                                         <!--end::Menu-->
