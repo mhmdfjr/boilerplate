@@ -79,7 +79,7 @@
                                     </td>
                                     <td>{{ $journal->content }}</td>
                                     <td>{{ $journal->created_at }}</td>
-                                    <!-- @canany(['permission-edit', 'permission-delete']) -->
+                                    @canany(['journal-edit', 'journal-delete'])
                                     <td class="text-end">
                                         <a href="#"
                                             class="btn btn-light btn-active-light-primary btn-flex btn-center btn-sm"
@@ -115,7 +115,7 @@
                                         </div>
                                         <!--end::Menu-->
                                     </td>
-                                    <!-- @endcanany -->
+                                    @endcanany
                                 </tr>
                             @endforeach
                             </tr>

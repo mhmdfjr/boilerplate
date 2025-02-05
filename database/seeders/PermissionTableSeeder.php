@@ -53,6 +53,12 @@ class PermissionTableSeeder extends Seeder
                 Permission::create($item);
             }
             $admin->syncPermissions(Permission::all());
-            $user->syncPermissions([]);
+            $user->syncPermissions([
+                'journal-view',
+                'journal-create',
+                'journal-edit',
+                'journal-delete',
+            ]);
+                
     }
 }
