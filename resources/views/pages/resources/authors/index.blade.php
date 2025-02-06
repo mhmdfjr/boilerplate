@@ -12,7 +12,7 @@
                 <div class="page-title d-flex flex-column justify-content-center gap-1 me-3">
                     <!--begin::Title-->
                     <h1 class="page-heading d-flex flex-column justify-content-center text-dark fw-bold fs-3 m-0">
-                        {{ __('Manage Journals') }}
+                        {{ __('Manage Authors') }}
                     </h1>
                     <!--end::Title-->
                 </div>
@@ -35,9 +35,9 @@
                         <!--begin::Search-->
                         <div class="d-flex align-items-center position-relative my-1">
                             <i class="ki-outline ki-magnifier fs-3 position-absolute ms-5"></i>
-                            <form action="{{ route('journals.index') }}" method="GET">
+                            <form action="{{ route('authors.index') }}" method="GET">
                                 <input type="text" id="user-search" name="search" data-kt-user-table-filter="search"
-                                    class="form-control form-control-solid w-250px ps-13" placeholder="Search Journal"  value="{{ request('search') }}" />
+                                    class="form-control form-control-solid w-250px ps-13" placeholder="Search Authors"  value="{{ request('search') }}" />
                             </form>                        </div>
                         <!--end::Search-->
                     </div>
@@ -46,13 +46,13 @@
                     <div class="card-toolbar">
                         <!--begin::Toolbar-->
                         <div class="d-flex justify-content-end">
-                            <!--begin::Add Journal-->
-                            <a href="{{ route('journals.create') }}">
+                            <!--begin::Add Author-->
+                            <a href="{{ route('authors.create') }}">
                                 <button type="button" class="btn btn-primary">
-                                    <i class="ki-outline ki-plus fs-2"></i> Add Journal
+                                    <i class="ki-outline ki-plus fs-2"></i> Add Authors
                                 </button>
                             </a>
-                            <!--end::Add Journal-->
+                            <!--end::Add Author-->
                         </div>
                         <!--end::Toolbar-->
                     </div>
@@ -62,27 +62,23 @@
                 <!--begin::Card body-->
                 <div class="card-body py-4">
                     <!--begin::Table-->
-                    <table id="journals-table" class="table align-middle table-row-dashed fs-6 gy-5">
+                    <table id="authors-table" class="table align-middle table-row-dashed fs-6 gy-5">
                         <thead>
                             <tr class="text-start text-muted fw-bold fs-7 text-uppercase gs-0">
-                                <th class="min-w-125px">Title</th>
-                                <th class="min-w-125px">Content</th>
-                                <th class="min-w-125px">Authors</th>
+                                <th class="min-w-125px">Name</th>
+                                <th class="min-w-125px">Position</th>
+                                <th class="min-w-125px">Created At</th>
                                 <th class="text-end min-w-100px">Actions</th>
                             </tr>
                         </thead>
                         <tbody class="text-gray-600 fw-semibold">
-                        @foreach ($journals as $journal)
+                        @foreach ($authors as $author)
                                 <tr>
                                     <td>
-                                        {{ $journal->title }}
+                                        {{ $author->name }}
                                     </td>
-                                    <td>{{ $journal->content }}</td>
-                                    <td>
-                                        @foreach ($journal->authors()->get() as $author)
-                                            <button class="btn btn-sm btn-secondary m-1">{{ $author->name }}</button>
-                                         @endforeach
-                                    </td>
+                                    <td>{{ $author->position }}</td>
+                                    <td>{{ $author->created_at }}</td>
                                     @canany(['journal-edit', 'journal-delete'])
                                     <td class="text-end">
                                         <a href="#"
@@ -95,7 +91,7 @@
                                             <!--begin::Menu item-->
                                             @can('journal-edit')
                                             <div class="menu-item px-3">
-                                                <a href="{{ route('journals.edit', ['journal' => $journal]) }}"
+                                                <a href="{{ route('authors.edit', ['author' => $author]) }}"
                                                     type="button" class="menu-link px-3 edit-role-btn">
                                                     Edit
                                                 </a>
@@ -105,13 +101,13 @@
                                             <!--begin::Menu item-->
                                             @can('journal-delete')
                                             <div class="menu-item px-3">
-                                                <form id="delete-form-{{ $journal->id }}"
-                                                    action="{{ route('journals.destroy', ['journal' => $journal]) }}"
+                                                <form id="delete-form-{{ $author->id }}"
+                                                    action="{{ route('authors.destroy', ['author' => $author]) }}"
                                                     method="POST">
                                                     @csrf
                                                     @method('DELETE')
                                                     <a href="#" class="menu-link px-3"
-                                                        onclick="event.preventDefault(); document.getElementById('delete-form-{{ $journal->id }}').submit();">Delete</a>
+                                                        onclick="event.preventDefault(); document.getElementById('delete-form-{{ $author->id }}').submit();">Delete</a>
                                                 </form>
                                             </div>
                                             @endcan

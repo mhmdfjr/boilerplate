@@ -17,4 +17,8 @@ class Journal extends Model
         return $this->belongsTo(User::class,'user-id');
     }
 
+    public function authors()
+    {
+        return $this->belongsToMany(Author::class, 'author_journal', );
+    }
 }

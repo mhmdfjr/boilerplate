@@ -12,7 +12,7 @@
                 <div class="page-title d-flex flex-column justify-content-center gap-1 me-3">
                     <!--begin::Title-->
                     <h1 class="page-heading d-flex flex-column justify-content-center text-dark fw-bold fs-3 m-0">
-                        {{ __('Create Journal') }}
+                        {{ __('Create Author') }}
                     </h1>
                     <!--end::Title-->
                 </div>
@@ -28,29 +28,29 @@
         <div id="kt_app_content_container" class="app-container container-fluid" style="padding-left: 0px!important; padding-right: 0px!important">
             <!--begin::Card-->
             <div class="card">
-            <form id="kt_modal_add_user_form" class="form px-5" action="{{ route('journals.store') }}" method="POST">
+            <form id="kt_modal_add_user_form" class="form px-5" action="{{ route('authors.store') }}" method="POST">
                 @csrf
                   <div class="card-body py-4">
                     <div class="mb-7">
                         <label class="required fw-semibold fs-6 mb-2">Title</label>
-                        <input type="text" name="title" id="title"
-                            class="form-control form-control-solid mb-3 mb-lg-0 {{ $errors->get("title") ? "is-invalid border border-1 border-danger" : "" }}" placeholder="Journal Title"
-                            value="{{ old('title') }}" />
-                        <x-input-error class="mt-2" :messages="$errors->get('title')" />
+                        <input type="text" name="name" id="name"
+                            class="form-control form-control-solid mb-3 mb-lg-0 {{ $errors->get("title") ? "is-invalid border border-1 border-danger" : "" }}" placeholder="Author Name"
+                            value="{{ old('name') }}" />
+                        <x-input-error class="mt-2" :messages="$errors->get('name')" />
                     </div>
                     <!--end::Input group-->
                     <!--begin::Input group-->
                     <div class="mb-7">
-                        <label class="required fw-semibold fs-6 mb-2">Content</label>
+                        <label class="required fw-semibold fs-6 mb-2">Position</label>
                         <textarea name="content" id="content"
                             class="form-control form-control-solid mb-3 mb-lg-0 {{ $errors->get('content') ? 'is-invalid border border-1 border-danger' : '' }}"
-                            placeholder="Journal Content">{{ old('content') }}</textarea>
-                        <x-input-error class="mt-2" :messages="$errors->get('content')" />
+                            placeholder="Author Position">{{ old('content') }}</textarea>
+                        <x-input-error class="mt-2" :messages="$errors->get('name')" />
                     </div>
 
                   </div>
                   <div class="card-footer d-flex justify-content-end py-6 px-9">
-                    <a href="{{ route('journals.index') }}">
+                    <a href="{{ route('authors.index') }}">
                         <button type="button" class="btn btn-light me-3">Cancel</button>
                     </a>
                     <!-- <button type="submit" class="btn btn-primary me-3" name="save_and_add_other" value="1">

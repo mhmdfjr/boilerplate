@@ -17,6 +17,9 @@ class DatabaseSeeder extends Seeder
             ConfigTableSeeder::class,
             PermissionTableSeeder::class,
             UserTableSeeder::class,
+            AuthorSeeder::class,
+            JournalSeeder::class,
+            AuthorJournalSeeder::class,
         ]);
     }
 }

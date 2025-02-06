@@ -3,7 +3,9 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Accounts\ProfileController;
 use App\Http\Controllers\Resources\PermissionController;
-use App\Http\Controllers\Journals\JournalController;
+use App\Http\Controllers\Resources\JournalController;
+use App\Http\Controllers\Resources\AuthorController;
+use App\Http\Controllers\MailtrapController;
 
 /*
 |--------------------------------------------------------------------------
@@ -49,6 +51,22 @@ Route::middleware('auth')->group(function () {
     });
 
 });
+
+Route::middleware('auth')->group(function () {
+
+    Route::prefix("authors")->name("authors.")->group(function () {
+        Route::get('/', [AuthorController::class, 'index'])->name('index'); // List all journals
+        Route::get('/create', [AuthorController::class, 'create'])->name('create'); // Show create form
+        Route::post('/', [AuthorController::class, 'store'])->name('store'); // Store new journal
+        Route::get('/{author}', [AuthorController::class, 'show'])->name('show'); // Show single author
+        Route::get('/{author}/edit', [AuthorController::class, 'edit'])->name('edit'); // Show edit form
+        Route::patch('/{author}', [AuthorController::class, 'update'])->name('update'); // Update author
+        Route::delete('/{author}', [AuthorController::class, 'destroy'])->name('destroy'); // Delete journal
+    });
+
+});
+
+Route::get('/mailtrap-emails', [MailtrapController::class, 'fetchEmails']);
 
 require __DIR__.'/auth.php';
 require __DIR__.'/resources.php';

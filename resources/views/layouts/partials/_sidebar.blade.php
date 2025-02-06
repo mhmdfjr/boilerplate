@@ -17,6 +17,14 @@
                     <span class="menu-title">{{ __('sidebar.journals') }}</span>
                 </a>
             </div>
+            <div class="menu-item">
+                <a class="menu-link {{ request()->is(['authors', 'authors/*']) ? 'active ' : '' }}" href="{{ route('authors.index') }}">
+                    <span class="menu-icon">
+                        <i class="fas fa-pen fs-2"></i>
+                    </span>
+                    <span class="menu-title">{{ __('sidebar.authors') }}</span>
+                </a>
+            </div>
 
             {{-- @canany(['roles-view', 'permission-view'])
                 <div data-kt-menu-trigger="click" class="menu-item menu-accordion {{ request()->is(['master', 'master/*']) ? 'here show' : '' }}">

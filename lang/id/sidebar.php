@@ -15,6 +15,7 @@ return [
 
     'dashboard'                      => 'Dashboard',
     'journals'                       => 'Journals',
+    'authors'                       => 'Authors',
     'web'                            => 'Menu',
     'web.general-ledger'             => 'Jurnal Umum',
     'web.chart-of-account'           => 'Bagan Akun',

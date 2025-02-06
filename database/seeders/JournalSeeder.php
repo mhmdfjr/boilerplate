@@ -14,10 +14,8 @@ class JournalSeeder extends Seeder
      */
     public function run(): void
     {
-        // Get the first user (or create one if none exists)
         $user = User::first() ?? User::factory()->create();
 
-        // Insert static journal entries
         Journal::insert([
             [
                 'user_id' => $user->id,
